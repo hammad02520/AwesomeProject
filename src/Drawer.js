@@ -6,6 +6,7 @@ import Login from "./screens/Login";
 import Chat from "./screens/Chat";
 import HomeScreen from "./screens/Home";
 import Explore from "./screens/Explore";
+import Setting from "./screens/Setting";
 
 
 const menu = [
@@ -20,20 +21,11 @@ const Drawer = () => {
     const moveToRight = useRef(new Animated.Value(1)).current;
     const scale = useRef(new Animated.Value(1)).current;
     const [selectedMenu, setSelectdMenu] = useState(0)
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
     const [explore,setExplore] = useState(false)
     const [chat,setChat] = useState(false)
     const [setting,setSetting] = useState(false)
-    const [home,setHome] = useState(false)
-    // const Abc = ( ) =>{
-    //     setHome(true)
-    // }
-    // const DD = ( ) =>{
-    //     setExplore(true)
-    // }
-    // const CC = ( ) =>{
-    //     setChat(true)
-    // }
+    const [home,setHome] = useState(true)
     return (
         < View style={{ flex: 1 }}>
             <View style={{ flex: 1, backgroundColor: green, }} >
@@ -58,11 +50,11 @@ const Drawer = () => {
                                     onPress={() => {
                                         setSelectdMenu(index)
                                         // navigation.navigate(item.titel.toString())
-                                        {item.titel.toString() === "Home"? setHome(true)&& setChat(false) &&setExplore(false):setHome(false)}
-                                        {item.titel.toString() === "Explore" ? setExplore(true)&&setChat(false) &&setHome(false):setExplore(false) }
-                                        // {item.titel.toString() === "Explore" ?  setExplore(true) :explore(false)}
-                                        // {item.titel.toString() === "Home" ?  setHome(true) :setHome(false)}
-                                        // {item.titel.toString() === "Home" ?  setHome(true) :setHome(false)}
+                                        {item.titel.toString() === "Home"? setChat(false) ||setExplore(false)||setSetting(false)||setHome(true):setHome(false)}
+                                        {item.titel.toString() === "Explore" ? setChat(false) ||setHome(false)||setSetting(false)||setExplore(true):setExplore(false) }
+                                        {item.titel.toString() === "Setting" ?setChat(false) ||setHome(false) ||setExplore(false)|| setSetting(true):setSetting(false) }
+                                        {item.titel.toString() === "Chat" ? setExplore(false) ||setHome(false)||setSetting(false) || setChat(true):setChat(false) }
+                        
                                     }}
                                 >
                                     <Image source={item.icon} style={{ width: 22, height: 22, marginLeft: 10, tintColor: selectedMenu == index ? 'black' : 'white' }} />
@@ -109,9 +101,8 @@ const Drawer = () => {
                 </View>
                
                     <View>
-                    {home ?  <HomeScreen />  :<Login />}
-                    {explore ?  <Explore />  :<Login />}
-                   
+
+                    {home ? <HomeScreen /> : <Login /> | setting ?  <Setting /> : <HomeScreen /> | explore ?<Explore />:<HomeScreen /> | chat ? <Chat />:<HomeScreen />}
                     </View>
                 
             </Animated.View >

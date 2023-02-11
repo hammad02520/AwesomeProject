@@ -4,7 +4,6 @@ import { Text, TouchableOpacity } from 'react-native'
 const MyButton = ({bgcolor,btnlabel,textColor,Press}) =>{
     return(
   <TouchableOpacity 
-  onPress={Press}
   style={{
     backgroundColor:bgcolor,
     borderRadius:100, 

@@ -21,7 +21,21 @@ const Login = (props) =>{
                  <View style={{width:'80%',alignItems:'flex-end',paddingRight:16,marginBottom:80}}>
                  <Text style={{color:darkGreen,fontSize:16,fontWeight:'bold'}}>Forget Password?</Text>
                 </View>
-               <MyButton textColor='white' bgcolor={darkGreen} btnlabel="Login" />
+               {/* <MyButton onPress={()=> props.navigation.navigate("Drawer")} textColor='white' bgcolor={darkGreen} btnlabel="Login" /> */}
+               <TouchableOpacity
+                 style={{
+                    backgroundColor: darkGreen,
+                    borderRadius:100, 
+                    width:330,
+                    alignItems:"center",
+                    paddingVertical: 10,
+                    marginHorizontal: 30,
+                    marginVertical:10
+                    }}
+               onPress={()=> props.navigation.navigate("Drawer")}>
+                <Text style={{color:"white",fontWeight:"bold"}}>Login</Text>
+                </TouchableOpacity>
+           
                <View style={{display:'flex',flexDirection: 'row'}}>
                 <Text>Don't have an account ? </Text>
                 <TouchableOpacity onPress={()=> props.navigation.navigate("Signup")}>
@@ -33,6 +47,4 @@ const Login = (props) =>{
         </Background>
     )
 }
-
-
 export default Login;

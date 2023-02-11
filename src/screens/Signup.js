@@ -6,7 +6,7 @@ import Field from '../Fields';
 import MyButton from "./Button";
 
 
-const Signup = (props) => {
+const Signup = (props, navigation) => {
     return (
         <Background>
             <View style={{ alignItems: "center", width: 410 }}>
@@ -34,7 +34,24 @@ const Signup = (props) => {
                     <Field placeholder='Contact Number' />
                     <Field placeholder='Email' />
                     <Field placeholder='Password' secureTextEntry={true} />
-                    <MyButton textColor='white' bgcolor={darkGreen} btnlabel="Signup" />
+                    {/* <MyButton onPress={( )=>
+                        Press.navigation.navigate("Signup")
+                    } textColor='white' bgcolor={darkGreen} btnlabel="Signup" /> */}
+
+         <TouchableOpacity
+                 style={{
+                    backgroundColor: darkGreen,
+                    borderRadius:100, 
+                    width:330,
+                    alignItems:"center",
+                    paddingVertical: 10,
+                    marginHorizontal: 30,
+                    marginVertical:10
+                    }}
+               onPress={()=> props.navigation.navigate("Drawer")}>
+                <Text style={{color:"white",fontWeight:"bold"}}>Signup</Text>
+                </TouchableOpacity>
+
                     <View style={{
                         display: 'flex',
                         flexDirection: 'row'
